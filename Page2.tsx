@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, Alert, StyleSheet } from 'react-native';
+import { View, TextInput, Button, Alert, StyleSheet, ImageBackground, Image } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from './App';
-
-type Page1NavigationProp = StackNavigationProp<RootStackParamList, '2'>;
+import { styles } from './Page1';
+type Page1NavigationProp = StackNavigationProp<RootStackParamList, 'Page2'>;
 
 interface Props {
   navigation: Page1NavigationProp;
@@ -29,32 +29,66 @@ const Page1: React.FC<Props> = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
+    <ImageBackground
+    source={require('./assets/background1.jpg')}
+    style={styles.background}>
+   
+          <Image
+            source={require('./assets/icon.png')}
+            style={page2Styles.topImage}
+          />
+       
+    <View style={page2Styles.container}>
+    
+      <ImageBackground
+        source={require('./assets/id.png')}
+        style={page2Styles.idImage}
+      />
       <TextInput
-        style={styles.input}
+      style={styles.textInput}
         placeholder="Enter an integer"
         keyboardType="numeric" // Numeric keyboard
         value={inputValue}
         onChangeText={handleInputChange}
       />
-      <Button title="Go to Page 3" onPress={handleSubmit} />
+      <View style={styles.button}>
+      <Button title="Start Prediction" onPress={handleSubmit} />
+      </View>
+      <View style={styles.bottomContainer}>
+          <Button title="Telegram" />
+          <Button title="Support" />
+        </View>
     </View>
+    </ImageBackground>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    padding: 16,
-  },
-  input: {
-    height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
-    marginBottom: 16,
-    paddingHorizontal: 8,
-  },
+export const page2Styles = StyleSheet.create({
+ container: {
+  flex: 1,
+  alignItems: 'center',
+  alignSelf: 'center',
+  justifyContent: 'flex-start',
+  marginTop: 0,
+  padding: 20, // Add padding to make it flexible with child content
+  width: '100%', // Ensure the container takes full width
+ },
+ idImage: {
+  width: 400,
+  height: 400,
+  backgroundColor: 'transparent',
+  marginBottom: 50,
+},
+topImage: {
+  width: 100,
+  height: 100,
+  backgroundColor: 'transparent',
+  marginBottom: 10,
+  alignItems: 'center',
+  alignSelf: 'center',
+  marginTop: 100,
+},
 });
+
 
 export default Page1;
