@@ -120,7 +120,6 @@ export const styles = StyleSheet.create({
     width: 250,
     marginBottom: 20,
     borderRadius: 10, 
-    //backgroundColor: '#FF0000FF',
   },
   smallButton: {
     marginBottom: 10,
@@ -128,7 +127,6 @@ export const styles = StyleSheet.create({
     overflow: 'hidden',
     width: '40%',
     alignSelf: 'flex-start',
-    //backgroundColor: '#00C3FFFF',
     height: 40,
     alignItems: 'center',
     justifyContent: 'center',
