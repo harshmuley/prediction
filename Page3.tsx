@@ -86,7 +86,8 @@ const Page3: React.FC<Props> = ({route, navigation}) => {
   return (
     <ImageBackground
       source={require('./assets/background1.jpg')}
-      style={styles.background}>
+      style={styles.background}
+      blurRadius={10}>
       <TopBar onlineUsers={savedValue} />
       <View style={Page3Styles.container}>
         <Image source={require('./assets/icon.png')} style={Page3Styles.topImage} />
@@ -194,13 +195,12 @@ const Page3: React.FC<Props> = ({route, navigation}) => {
 
 const Page3Styles = StyleSheet.create({
   container: {
-    height: '40%',
-    width: '90%',
     alignSelf: 'center',
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#232A43FF',
-    marginTop: '50%',
+    marginVertical: '50%', // Pushes the container down halfway across the screen on the y-axis
+    padding: 20,
     borderRadius: 30,
     borderWidth: 1,
     borderColor: 'white',
@@ -211,7 +211,7 @@ const Page3Styles = StyleSheet.create({
     borderWidth: 1,
     marginBottom: 16,
     paddingHorizontal: 8,
-    width: '80%',
+    width: '100%',
   },
   text: {
     fontSize: 20,

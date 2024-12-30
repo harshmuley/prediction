@@ -36,15 +36,18 @@ const Page1: React.FC<Props> = ({ navigation }) => {
   return (
     <ImageBackground
       source={require('./assets/background1.jpg')}
-      style={styles.background}>
+      style={styles.background}
+      blurRadius={10}>
+        
       <Image
         source={require('./assets/icon.png')}
-        style={page2Styles.topImage}
+        style={page2Styles.appicon}
       />
       <View style={page2Styles.container}>
         <ImageBackground
           source={require('./assets/id.png')}
           style={page2Styles.idImage}
+          
           imageStyle={{ borderRadius: 20 }} // Make image borders rounded
         />
         <TextInput
@@ -86,17 +89,17 @@ export const page2Styles = StyleSheet.create({
     alignSelf: 'center',
     justifyContent: 'flex-start',
     marginTop: 0,
-    padding: 20, // Add padding to make it flexible with child content
-    width: '100%', // Ensure the container takes full width
+    padding: 20, 
+    width: '100%',
   },
   idImage: {
-    width: 400,
-    height: 400,
+    width: 300,
+    height: 300,
     backgroundColor: 'transparent',
     marginBottom: 50,
-    borderRadius: 200, // Make corners rounded
+    borderRadius: 150, // Make corners rounded
   },
-  topImage: {
+  appicon: {
     width: 100,
     height: 100,
     backgroundColor: 'transparent',

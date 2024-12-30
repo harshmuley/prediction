@@ -49,8 +49,11 @@ const Page1: React.FC<Props> = ({ navigation }) => {
   const [alertConfig, setAlertConfig] = useState({ title: '', message: '', onCancel: () => {}, onConfirm: () => {} });
 
   return (
-    <ImageBackground source={require('./assets/background1.jpg')}
-      style={styles.background}>
+    <ImageBackground
+      source={require('./assets/background1.jpg')}
+      style={styles.background}
+      blurRadius={10}
+    >
       <View style={styles.container}>
         <Image
           source={require('./assets/icon.png')}
