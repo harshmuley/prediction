@@ -43,6 +43,7 @@ const Page1: React.FC<Props> = ({ navigation }) => {
       <ImageBackground
         source={require('./assets/id.png')}
         style={page2Styles.idImage}
+        imageStyle={{ borderRadius: 20 }} // Make image borders rounded
       />
       <TextInput
       style={styles.textInput}
@@ -82,6 +83,7 @@ export const page2Styles = StyleSheet.create({
   height: 400,
   backgroundColor: 'transparent',
   marginBottom: 50,
+  borderRadius: 200, // Make corners rounded
 },
 topImage: {
   width: 100,

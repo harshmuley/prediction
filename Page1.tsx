@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackParamList} from './App';
+import IconButton from './components/IconButton';
 
 // Function to handle URL opening
 const handlePress = () => {
@@ -80,24 +81,14 @@ const Page1: React.FC<Props> = ({navigation}) => {
           </View>
         </View>
         <View style={styles.bottomContainer}>
-          <TouchableOpacity style={styles.smallButton}>
-            <View style={styles.iconTextContainer}>
-              <Image
-                source={require('./assets/telegram.png')}
-                style={styles.icon}
-              />
-              <Text style={{ textAlign: 'center' }}>Telegram</Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.smallButton}>
-            <View style={styles.iconTextContainer}>
-              <Image
-                source={require('./assets/telegram.png')}
-                style={styles.icon}
-              />
-              <Text style={{ textAlign: 'center' }}>Support</Text>
-            </View>
-          </TouchableOpacity>
+          <IconButton
+            iconSource={require('./assets/telegram.png')}
+            label="Telegram"
+          />
+          <IconButton
+            iconSource={require('./assets/support.png')}
+            label="Support"
+          />
         </View>
       </View>
     </ImageBackground>
