@@ -4,7 +4,6 @@ import {
   Text,
   Button,
   TextInput,
-  Alert,
   StyleSheet,
   Linking,
   ActivityIndicator,
@@ -19,6 +18,8 @@ import {styles} from './Page1';
 import IconButton from './components/IconButton';
 import CustomButton from './components/CustomButton';
 import TopBar from './components/TopBar';
+import CustomAlert from './components/CustomAlert';
+
 type Page3RouteProp = RouteProp<RootStackParamList, 'Page3'>;
 type Page3NavigationProp = StackNavigationProp<RootStackParamList, 'Page3'>;
 
@@ -33,6 +34,7 @@ const Page3: React.FC<Props> = ({route, navigation}) => {
   const [randomSizeText, setRandomSizeText] = useState<string>(''); // State for "Big" or "Small"
   const [isLoading, setIsLoading] = useState<boolean>(false); // State for loading spinner
   const [isMounted, setIsMounted] = useState(true);
+  const [alertVisible, setAlertVisible] = useState<boolean>(false);
 
   useEffect(() => {
     setIsMounted(true);
@@ -52,7 +54,7 @@ const Page3: React.FC<Props> = ({route, navigation}) => {
   const handleRandomColorButtonpress = () => {
     if (inputValue.trim() === '') {
       if (isMounted) {
-        Alert.alert('Invalid Input', 'Please enter a valid integer value.');
+        setAlertVisible(true);
       }
       return;
     }
@@ -88,15 +90,12 @@ const Page3: React.FC<Props> = ({route, navigation}) => {
     <ImageBackground
       source={require('./assets/background1.jpg')}
       style={styles.background}>
-      <TopBar />
+      <TopBar onlineUsers={savedValue} />
       <View style={Page3Styles.container}>
-        <Image
-          source={require('./assets/icon.png')}
-          style={Page3Styles.topImage}
-        />
+        <Image source={require('./assets/icon.png')} style={Page3Styles.topImage} />
 
-        {/* Show the saved value passed from Page2 */}
-        <Text style={Page3Styles.text}>Saved Profile ID: {savedValue}</Text>
+        {/* Show the saved value passed from Page2
+        <Text style={Page3Styles.text}>Saved Profile ID: {savedValue}</Text> */}
 
         {/* Input field for user to enter a number */}
         <TextInput
@@ -187,6 +186,14 @@ const Page3: React.FC<Props> = ({route, navigation}) => {
           label="Support"
         />
       </View>
+
+      <CustomAlert
+        visible={alertVisible}
+        title="Invalid Input"
+        message="Please enter a valid integer value."
+        onCancel={() => setAlertVisible(false)}
+        onConfirm={() => setAlertVisible(false)}
+      />
     </ImageBackground>
   );
 };

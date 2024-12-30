@@ -10,7 +10,9 @@ interface CustomButtonProps {
 const CustomButton: React.FC<CustomButtonProps> = ({ title, onPress }) => {
   return (
     <LinearGradient
-      colors={['#C933FFFF', '#3363FFFF']} // Gradient colors
+      colors={['#C933FFFF', '#3363FFFF',"#C933FFFF"]} // Gradient colors
+      start={{ x: 0, y: 0 }} // Start from the left
+      end={{ x: 1, y: 0 }} // End at the right
       style={styles.gradientBorder}
     >
       <TouchableOpacity style={styles.button} onPress={onPress}>

@@ -55,7 +55,6 @@ const Page1: React.FC<Props> = ({ navigation }) => {
   return (
     <ImageBackground source={require('./assets/background1.jpg')}
       style={styles.background}>
-      <TopBar />
       <View style={styles.container}>
         <Image
           source={require('./assets/icon.png')}

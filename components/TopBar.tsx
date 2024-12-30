@@ -1,11 +1,15 @@
 import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 
-const TopBar: React.FC = () => {
+interface TopBarProps {
+  onlineUsers: number;
+}
+
+const TopBar: React.FC<TopBarProps> = ({ onlineUsers }) => {
   return (
     <View style={styles.fullWidthBlueComponent}>
       <View style={styles.greenCircle} />
-      <Text style={styles.text}>Online Users: 100</Text>
+      <Text style={styles.text}>Online: {onlineUsers}</Text>
     </View>
   );
 };
