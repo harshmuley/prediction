@@ -2,14 +2,11 @@ import React, {useState, useEffect} from 'react';
 import {
   View,
   Text,
-  Button,
   TextInput,
   StyleSheet,
-  Linking,
   ActivityIndicator,
   ImageBackground,
   Image,
-  TouchableOpacity,
 } from 'react-native';
 import {RouteProp} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
@@ -93,9 +90,6 @@ const Page3: React.FC<Props> = ({route, navigation}) => {
       <TopBar onlineUsers={savedValue} />
       <View style={Page3Styles.container}>
         <Image source={require('./assets/icon.png')} style={Page3Styles.topImage} />
-
-        {/* Show the saved value passed from Page2
-        <Text style={Page3Styles.text}>Saved Profile ID: {savedValue}</Text> */}
 
         {/* Input field for user to enter a number */}
         <TextInput

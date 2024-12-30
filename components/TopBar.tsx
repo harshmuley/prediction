@@ -9,7 +9,7 @@ const TopBar: React.FC<TopBarProps> = ({ onlineUsers }) => {
   return (
     <View style={styles.fullWidthBlueComponent}>
       <View style={styles.greenCircle} />
-      <Text style={styles.text}>Online: {onlineUsers}</Text>
+      <Text style={styles.text}>User ID: {onlineUsers}</Text>
     </View>
   );
 };

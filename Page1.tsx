@@ -1,19 +1,15 @@
 import React, { useState } from 'react';
 import {
   View,
-  Text,
-  Button,
   Linking,
   ImageBackground,
   StyleSheet,
-  TouchableOpacity,
   Image,
 } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from './App';
 import IconButton from './components/IconButton';
 import CustomButton from './components/CustomButton';
-import TopBar from './components/TopBar';
 import CustomAlert from './components/CustomAlert';
 
 const handlePress = (setAlertVisible: React.Dispatch<React.SetStateAction<boolean>>, setAlertConfig: React.Dispatch<React.SetStateAction<any>>) => {

@@ -9,7 +9,7 @@ import Page3 from './Page3';
 export type RootStackParamList = {
   Page1: undefined;
   Page2: undefined;
-  Page3: undefined;
+  Page3: { savedValue: number };
   Page4: undefined;
 };
 

@@ -5,7 +5,6 @@ import { RootStackParamList } from './App';
 import { styles } from './Page1';
 import IconButton from './components/IconButton';
 import CustomButton from './components/CustomButton';
-import TopBar from './components/TopBar';
 import CustomAlert from './components/CustomAlert';
 
 type Page1NavigationProp = StackNavigationProp<RootStackParamList, 'Page2'>;
