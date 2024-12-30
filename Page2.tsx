@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, Alert, StyleSheet, ImageBackground, Image } from 'react-native';
+import { View, TextInput, Button, Alert, StyleSheet, ImageBackground, Image, TouchableOpacity, Text } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from './App';
 import { styles } from './Page1';
@@ -55,8 +55,12 @@ const Page1: React.FC<Props> = ({ navigation }) => {
       <Button title="Start Prediction" onPress={handleSubmit} />
       </View>
       <View style={styles.bottomContainer}>
-          <Button title="Telegram" />
-          <Button title="Support" />
+          <TouchableOpacity style={styles.smallButton}>
+            <Text  style={{ textAlign: 'center' }}>Telegram</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.smallButton}>
+            <Text style={{ textAlign: 'center' }}>Support</Text>
+          </TouchableOpacity>
         </View>
     </View>
     </ImageBackground>

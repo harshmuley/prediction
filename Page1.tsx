@@ -80,11 +80,25 @@ const Page1: React.FC<Props> = ({navigation}) => {
           </View>
         </View>
         <View style={styles.bottomContainer}>
-          <Button title="Telegram" />
-          <Button title="Support" />
+          <TouchableOpacity style={styles.smallButton}>
+            <View style={styles.iconTextContainer}>
+              <Image
+                source={require('./assets/telegram.png')}
+                style={styles.icon}
+              />
+              <Text style={{ textAlign: 'center' }}>Telegram</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.smallButton}>
+            <View style={styles.iconTextContainer}>
+              <Image
+                source={require('./assets/telegram.png')}
+                style={styles.icon}
+              />
+              <Text style={{ textAlign: 'center' }}>Support</Text>
+            </View>
+          </TouchableOpacity>
         </View>
-
-     
       </View>
     </ImageBackground>
   );
@@ -126,7 +140,11 @@ export const styles = StyleSheet.create({
     borderRadius: 10,
     overflow: 'hidden',
     width: '40%',
-    alignSelf: 'center',
+    alignSelf: 'flex-start',
+    backgroundColor: '#00C3FFFF',
+    height: 40,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   bottomContainer: {
     flexDirection: 'row',
@@ -151,6 +169,15 @@ export const styles = StyleSheet.create({
     color: 'black',
     backgroundColor: '#FFFFFFFF'
     
+  },
+  icon: {
+    width: 20,
+    height: 20,
+    marginRight: 10,
+  },
+  iconTextContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 });
 export default Page1;

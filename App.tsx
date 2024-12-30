@@ -21,7 +21,7 @@ const App: React.FC = () => {
       <StatusBar hidden={true} />
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName="Page3"
+          initialRouteName="Page1"
           screenOptions={{
             gestureEnabled: true, // Enable swipe gestures on Android
             cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS, // Custom slide animation
