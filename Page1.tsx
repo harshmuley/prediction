@@ -13,7 +13,8 @@ import {
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackParamList} from './App';
 import IconButton from './components/IconButton';
-
+import CustomButton from './components/CustomButton';
+import TopBar from './components/TopBar';
 // Function to handle URL opening
 const handlePress = () => {
   Alert.alert(
@@ -61,23 +62,23 @@ interface Props {
 
 const Page1: React.FC<Props> = ({navigation}) => {
   return (
-    <ImageBackground
-      source={require('./assets/background1.jpg')}
+    <ImageBackground source={require('./assets/background1.jpg')}
       style={styles.background}>
+      <TopBar />
       <View style={styles.container}>
           <Image
             source={require('./assets/icon.png')}
             style={styles.topImage}
           />
         <View style={styles.buttonContainer}>
-          <View style={styles.button}>
-            <Button 
+          <View>
+            <CustomButton 
               title="LOG IN"
               onPress={() => handleButtonPress(navigation)}
             />
           </View>
-          <View style={styles.button}>
-            <Button title="REGISTER" onPress={handlePress} />
+          <View>
+            <CustomButton title="REGISTER" onPress={handlePress} />
           </View>
         </View>
         <View style={styles.bottomContainer}>
@@ -98,7 +99,7 @@ const Page1: React.FC<Props> = ({navigation}) => {
 export const styles = StyleSheet.create({
   background: {
     flex: 1,
-    backgroundColor: '#f0f0f0',
+    backgroundColor: '#F0F0F000',
   },
   container: {
     flex: 1,
@@ -106,6 +107,7 @@ export const styles = StyleSheet.create({
     alignSelf: 'center',
     justifyContent: 'flex-start',
     marginTop: 200,
+    //backgroundColor: '#FF0000FF',
   },
   topImage: {
     width: 200,
@@ -115,16 +117,10 @@ export const styles = StyleSheet.create({
   },
  
   buttonContainer: {
-    width: '80%',
+    width: 250,
     marginBottom: 20,
-    borderRadius: 10, // Added to make the buttons round
-  },
-  button: {
-    marginBottom: 10,
-    borderRadius: 10,
-    overflow: 'hidden',
-    width: '80%',
-    alignSelf: 'center',
+    borderRadius: 10, 
+    //backgroundColor: '#FF0000FF',
   },
   smallButton: {
     marginBottom: 10,
@@ -132,7 +128,7 @@ export const styles = StyleSheet.create({
     overflow: 'hidden',
     width: '40%',
     alignSelf: 'flex-start',
-    backgroundColor: '#00C3FFFF',
+    //backgroundColor: '#00C3FFFF',
     height: 40,
     alignItems: 'center',
     justifyContent: 'center',

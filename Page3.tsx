@@ -1,9 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, Button, TextInput, Alert, StyleSheet, Linking, ActivityIndicator, ImageBackground, Image, TouchableOpacity } from 'react-native';
-import { RouteProp } from '@react-navigation/native';
-import { StackNavigationProp } from '@react-navigation/stack';
-import { RootStackParamList } from './App';
-import { styles } from './Page1';
+import React, {useState, useEffect} from 'react';
+import {
+  View,
+  Text,
+  Button,
+  TextInput,
+  Alert,
+  StyleSheet,
+  Linking,
+  ActivityIndicator,
+  ImageBackground,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
+import {RouteProp} from '@react-navigation/native';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {RootStackParamList} from './App';
+import {styles} from './Page1';
+import IconButton from './components/IconButton';
+import CustomButton from './components/CustomButton';
+import TopBar from './components/TopBar';
 type Page3RouteProp = RouteProp<RootStackParamList, 'Page3'>;
 type Page3NavigationProp = StackNavigationProp<RootStackParamList, 'Page3'>;
 
@@ -11,7 +26,7 @@ interface Props {
   route: Page3RouteProp;
   navigation: Page3NavigationProp;
 }
-const Page3: React.FC<Props> = ({ route, navigation }) => {
+const Page3: React.FC<Props> = ({route, navigation}) => {
   const savedValue = route?.params?.savedValue; // Retrieve the passed integer
   const [inputValue, setInputValue] = useState<string>(''); // Input field state
   const [randomColor, setRandomColor] = useState<string>(''); // State for random color
@@ -24,7 +39,8 @@ const Page3: React.FC<Props> = ({ route, navigation }) => {
     return () => setIsMounted(false);
   }, []);
 
-  const handlePress = (navigation: any) => { navigation.navigate('Page1');
+  const handlePress = (navigation: any) => {
+    navigation.navigate('Page1');
   };
 
   const handleInputChange = (text: string) => {
@@ -70,78 +86,120 @@ const Page3: React.FC<Props> = ({ route, navigation }) => {
 
   return (
     <ImageBackground
-    source={require('./assets/background1.jpg')}
-    style={styles.background}>
-    
+      source={require('./assets/background1.jpg')}
+      style={styles.background}>
+      <TopBar />
+      <View style={Page3Styles.container}>
+        <Image
+          source={require('./assets/icon.png')}
+          style={Page3Styles.topImage}
+        />
 
-    <View style={Page3Styles.container}>
-    <Image
-            source={require('./assets/icon.png')}
-            style={Page3Styles.topImage}
+        {/* Show the saved value passed from Page2 */}
+        <Text style={Page3Styles.text}>Saved Profile ID: {savedValue}</Text>
+
+        {/* Input field for user to enter a number */}
+        <TextInput
+          style={styles.textInput}
+          placeholder="Enter an integer"
+          keyboardType="numeric" // Numeric keyboard
+          value={inputValue}
+          onChangeText={handleInputChange}
+        />
+
+        {/* Loading spinner */}
+        {isLoading && (
+          <ActivityIndicator
+            size="large"
+            color="blue"
+            style={Page3Styles.spinner}
           />
-   
-      {/* Show the saved value passed from Page2 */}
-      <Text style={Page3Styles.text}>Saved Integer: {savedValue}</Text>
+        )}
 
-      {/* Input field for user to enter a number */}
-      <TextInput
-        style={styles.textInput}
-        placeholder="Enter an integer"
-        keyboardType="numeric" // Numeric keyboard
-        value={inputValue}
-        onChangeText={handleInputChange}
-      />
+        {/* Display random color and size only if loading is false */}
+        {!isLoading && (randomColor || randomSizeText) ? (
+          <View style={Page3Styles.roundedContainer}>
+            {randomColor && (
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}>
+                <Text
+                  style={[
+                    Page3Styles.text,
+                    {color: 'white', marginRight: 10, textAlign: 'center'},
+                  ]}>
+                  Random Color: {randomColor}
+                </Text>
+                <View
+                  style={{
+                    width: 30,
+                    height: 15,
+                    backgroundColor: randomColor,
+                    borderRadius: 1,
+                    borderWidth: 1,
+                    borderColor: 'white',
+                  }}
+                />
+              </View>
+            )}
+            {randomSizeText && (
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}>
+                <Text
+                  style={[
+                    Page3Styles.text,
+                    {color: 'white', marginRight: 10, textAlign: 'center'},
+                  ]}>
+                  Random Size: {randomSizeText}
+                </Text>
+              </View>
+            )}
+          </View>
+        ) : null}
 
-     
-
-      {/* Loading spinner */}
-      {isLoading && <ActivityIndicator size="large" color="blue" style={Page3Styles.spinner} />}
-
-      {/* Display random color and size only if loading is false */}
-      {!isLoading && randomColor ? (
-        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-          <Text style={[Page3Styles.text, { color: "white", marginRight: 10 }]}>
-            Random Color: 
-          </Text>
-          <View style={{ width: 30, height: 15, backgroundColor: randomColor,borderRadius: 1,borderWidth: 1,borderColor: 'white' }} />
+        {/* Button to generate random color and size */}
+        <View style={styles.buttonContainer}>
+          <CustomButton
+            title="Generate Random "
+            onPress={handleRandomColorButtonpress}
+          />
         </View>
-      ) : null}
-
-      {!isLoading && randomSizeText ? (
-        <Text style={Page3Styles.text}>Random Size: {randomSizeText}</Text>
-      ) : null}
-
- {/* Button to generate random color and size */}
- <View style={styles.button}>
-      <Button title="Generate Random " onPress={handleRandomColorButtonpress} />
-      </View>
-      {/* Navigation back to Page1 */}
-      <View style={styles.button}>
-      <Button title="Home" onPress={() => handlePress(navigation)} />
-      </View>
-    </View>
-
-    <View style={styles.bottomContainer}>
-          <TouchableOpacity style={styles.smallButton}>
-            <Text style={{ textAlign: 'center' }}>Telegram</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.smallButton}>
-            <Text style={{ textAlign: 'center' }}>Support</Text>
-          </TouchableOpacity>
+        {/* Navigation back to Page1 */}
+        <View style={styles.buttonContainer}>
+          <CustomButton title="Home" onPress={() => handlePress(navigation)} />
         </View>
+      </View>
+
+      <View style={styles.bottomContainer}>
+        <IconButton
+          iconSource={require('./assets/telegram.png')}
+          label="Telegram"
+        />
+        <IconButton
+          iconSource={require('./assets/support.png')}
+          label="Support"
+        />
+      </View>
     </ImageBackground>
   );
 };
 
 const Page3Styles = StyleSheet.create({
   container: {
-    height:"40%",
-    width:"90%",
+    height: '40%',
+    width: '90%',
     alignSelf: 'center',
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#232A43FF',
-    marginTop: "50%",
+    marginTop: '50%',
     borderRadius: 30,
     borderWidth: 1,
     borderColor: 'white',
@@ -158,16 +216,28 @@ const Page3Styles = StyleSheet.create({
     fontSize: 20,
     marginVertical: 10,
     textAlign: 'center',
-    color: 'white'
+    color: 'white',
   },
   spinner: {
     marginVertical: 20, // Spacing for the loading spinner
   },
   topImage: {
-    width: 80,
-    height: 80,
+    width: 60,
+    height: 60,
     backgroundColor: 'transparent',
     marginBottom: 0,
+  },
+  roundedContainer: {
+    borderRadius: 10,
+    overflow: 'hidden',
+    padding: 10,
+    marginVertical: 10,
+    color: 'white',
+    backgroundColor: '#344B79FF',
+    width: '80%',
+    height: 100,
+    borderWidth: 1,
+    borderColor: 'white',
   },
 });
 

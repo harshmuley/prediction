@@ -3,6 +3,9 @@ import { View, TextInput, Button, Alert, StyleSheet, ImageBackground, Image, Tou
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from './App';
 import { styles } from './Page1';
+import IconButton from './components/IconButton';
+import CustomButton from './components/CustomButton';
+import TopBar from './components/TopBar';
 type Page1NavigationProp = StackNavigationProp<RootStackParamList, 'Page2'>;
 
 interface Props {
@@ -32,7 +35,7 @@ const Page1: React.FC<Props> = ({ navigation }) => {
     <ImageBackground
     source={require('./assets/background1.jpg')}
     style={styles.background}>
-   
+    <TopBar />
           <Image
             source={require('./assets/icon.png')}
             style={page2Styles.topImage}
@@ -47,21 +50,23 @@ const Page1: React.FC<Props> = ({ navigation }) => {
       />
       <TextInput
       style={styles.textInput}
-        placeholder="Enter an integer"
+        placeholder="Enter an profile ID"
         keyboardType="numeric" // Numeric keyboard
         value={inputValue}
         onChangeText={handleInputChange}
       />
-      <View style={styles.button}>
-      <Button title="Start Prediction" onPress={handleSubmit} />
+      <View style={styles.buttonContainer}>
+      <CustomButton title="Start Prediction" onPress={handleSubmit} />
       </View>
       <View style={styles.bottomContainer}>
-          <TouchableOpacity style={styles.smallButton}>
-            <Text  style={{ textAlign: 'center' }}>Telegram</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.smallButton}>
-            <Text style={{ textAlign: 'center' }}>Support</Text>
-          </TouchableOpacity>
+          <IconButton
+            iconSource={require('./assets/telegram.png')}
+            label="Telegram"
+          />
+          <IconButton
+            iconSource={require('./assets/support.png')}
+            label="Support"
+          />
         </View>
     </View>
     </ImageBackground>
