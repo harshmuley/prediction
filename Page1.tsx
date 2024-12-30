@@ -1,57 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
   Button,
   Linking,
-  Alert,
   ImageBackground,
   StyleSheet,
   TouchableOpacity,
   Image,
 } from 'react-native';
-import {StackNavigationProp} from '@react-navigation/stack';
-import {RootStackParamList} from './App';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList } from './App';
 import IconButton from './components/IconButton';
 import CustomButton from './components/CustomButton';
 import TopBar from './components/TopBar';
-// Function to handle URL opening
-const handlePress = () => {
-  Alert.alert(
-    'Open URL',
-    'This will redirect you to a website out of this app',
-    [
-      {
-        text: 'Cancel',
-        style: 'cancel',
-      },
-      {
-        text: 'OK',
-        onPress: () => Linking.openURL('https://www.youtube.com/c/GamingFreak21'), // Replace with your URL
-      },
-    ],
-    { cancelable: false }
-  );
+import CustomAlert from './components/CustomAlert';
+
+const handlePress = (setAlertVisible: React.Dispatch<React.SetStateAction<boolean>>, setAlertConfig: React.Dispatch<React.SetStateAction<any>>) => {
+  setAlertConfig({
+    title: 'Open URL',
+    message: 'This will redirect you to a website out of this app',
+    onCancel: () => setAlertVisible(false),
+    onConfirm: () => {
+      setAlertVisible(false);
+      Linking.openURL('https://www.youtube.com/c/GamingFreak21');
+    },
+  });
+  setAlertVisible(true);
 };
 
-// Function to handle button press, shows an alert and navigates after OK
-const handleButtonPress = (navigation: any) => {
-  // Show the alert
-  Alert.alert('Go to Login?', 'Please register first if you are new user', [
-    {
-      text: 'Next',
-      onPress: () => {
-        // Navigate to 'Page2' after pressing 'Next'
-        navigation.navigate('Page2');
-      },
+const handleButtonPress = (navigation: any, setAlertVisible: React.Dispatch<React.SetStateAction<boolean>>, setAlertConfig: React.Dispatch<React.SetStateAction<any>>) => {
+  setAlertConfig({
+    title: 'Go to Login?',
+    message: 'Please register first if you are new user',
+    onCancel: () => setAlertVisible(false),
+    onConfirm: () => {
+      setAlertVisible(false);
+      navigation.navigate('Page2');
     },
-    {
-      text: 'Register Now',
-      onPress: () => {
-        handlePress();
-      },
-    },
-  ]);
+  });
+  setAlertVisible(true);
 };
 
 type Page1NavigationProp = StackNavigationProp<RootStackParamList, 'Page1'>;
@@ -60,25 +48,28 @@ interface Props {
   navigation: Page1NavigationProp;
 }
 
-const Page1: React.FC<Props> = ({navigation}) => {
+const Page1: React.FC<Props> = ({ navigation }) => {
+  const [alertVisible, setAlertVisible] = useState(false);
+  const [alertConfig, setAlertConfig] = useState({ title: '', message: '', onCancel: () => {}, onConfirm: () => {} });
+
   return (
     <ImageBackground source={require('./assets/background1.jpg')}
       style={styles.background}>
       <TopBar />
       <View style={styles.container}>
-          <Image
-            source={require('./assets/icon.png')}
-            style={styles.topImage}
-          />
+        <Image
+          source={require('./assets/icon.png')}
+          style={styles.topImage}
+        />
         <View style={styles.buttonContainer}>
           <View>
-            <CustomButton 
+            <CustomButton
               title="LOG IN"
-              onPress={() => handleButtonPress(navigation)}
+              onPress={() => handleButtonPress(navigation, setAlertVisible, setAlertConfig)}
             />
           </View>
           <View>
-            <CustomButton title="REGISTER" onPress={handlePress} />
+            <CustomButton title="REGISTER" onPress={() => handlePress(setAlertVisible, setAlertConfig)} />
           </View>
         </View>
         <View style={styles.bottomContainer}>
@@ -92,6 +83,13 @@ const Page1: React.FC<Props> = ({navigation}) => {
           />
         </View>
       </View>
+      <CustomAlert
+        visible={alertVisible}
+        title={alertConfig.title}
+        message={alertConfig.message}
+        onCancel={alertConfig.onCancel}
+        onConfirm={alertConfig.onConfirm}
+      />
     </ImageBackground>
   );
 };
@@ -107,7 +105,6 @@ export const styles = StyleSheet.create({
     alignSelf: 'center',
     justifyContent: 'flex-start',
     marginTop: 200,
-    //backgroundColor: '#FF0000FF',
   },
   topImage: {
     width: 200,
@@ -115,11 +112,10 @@ export const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     marginBottom: 100,
   },
- 
   buttonContainer: {
     width: 250,
     marginBottom: 20,
-    borderRadius: 10, 
+    borderRadius: 10,
   },
   smallButton: {
     marginBottom: 10,
@@ -153,7 +149,6 @@ export const styles = StyleSheet.create({
     borderRadius: 10,
     color: 'black',
     backgroundColor: '#FFFFFFFF'
-    
   },
   icon: {
     width: 20,
@@ -166,4 +161,3 @@ export const styles = StyleSheet.create({
   },
 });
 export default Page1;
-
