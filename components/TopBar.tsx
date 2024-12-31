@@ -33,10 +33,12 @@ const styles = StyleSheet.create({
   leftContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    paddingLeft: "5%",
   },
   rightContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    paddingRight: "5%",
   },
   text: {
     color: 'white',

@@ -198,12 +198,17 @@ const Page3Styles = StyleSheet.create({
     alignSelf: 'center',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#232A4380', // 50% transparency
-    marginVertical: '50%', // Pushes the container down halfway across the screen on the y-axis
+    backgroundColor: 'transparent', // Make background transparent
+    marginVertical: '40%', // Pushes the container down halfway across the screen on the y-axis
     padding: 20,
-    borderRadius: 30,
-    borderWidth: 1,
     borderColor: 'white',
+    shadowColor: '#000', // Add shadow for elevation effect
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5, // Elevation for Android
+    width: '80%',
+    height: '30%',
   },
   input: {
     height: 40,
@@ -234,7 +239,7 @@ const Page3Styles = StyleSheet.create({
     padding: 10,
     marginVertical: 10,
     color: 'white',
-    backgroundColor: '#344B79FF',
+    backgroundColor: '#344B7963',
     width: '80%',
     height: 100,
     borderWidth: 1,
