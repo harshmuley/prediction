@@ -64,7 +64,7 @@ const Page1: React.FC<Props> = ({ navigation }) => {
           <CustomButton title="Start Prediction" onPress={handleSubmit} />
         </View>
         <View style={[page2Styles.chatContainer]}>
-          <CustomChatBar textcontent="'अगर आप कोई और App का Prediction चाहते हैं तो अभी हमारा telegram जॉइन करे।'"/>
+          <CustomChatBar textcontent="'अगर आप कोई और App का Prediction चाहते हैं तो अभी हमारा telegram जॉइन करे!'"/>
                  </View>
 
         <View style={styles.bottomContainer}>
