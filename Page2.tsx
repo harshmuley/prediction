@@ -7,6 +7,7 @@ import IconButton from './components/IconButton';
 import CustomButton from './components/CustomButton';
 import CustomAlert from './components/CustomAlert';
 import CustomTextInput from './components/CustomTextInput';
+import CustomChatBar from './components/CustomChatBar';
 
 type Page1NavigationProp = StackNavigationProp<RootStackParamList, 'Page2'>;
 
@@ -39,7 +40,7 @@ const Page1: React.FC<Props> = ({ navigation }) => {
       source={require('./assets/background1.jpg')}
       style={styles.background}
       blurRadius={10}>
-        
+
       <Image
         source={require('./assets/icon.png')}
         style={page2Styles.appicon}
@@ -48,18 +49,24 @@ const Page1: React.FC<Props> = ({ navigation }) => {
         <ImageBackground
           source={require('./assets/id.png')}
           style={page2Styles.idImage}
-          
+
           imageStyle={{ borderRadius: 20 }} // Make image borders rounded
         />
         <CustomTextInput
-          placeholder="Enter a profile ID"
+          placeholder="Enter a profile ID..."
           keyboardType="numeric"
           value={inputValue}
           onChangeText={handleInputChange}
+          placeholderTextColor="#FFFFFF"
+
         />
         <View style={styles.buttonContainer}>
           <CustomButton title="Start Prediction" onPress={handleSubmit} />
         </View>
+        <View style={[page2Styles.chatContainer]}>
+          <CustomChatBar textcontent="'अगर आप कोई और App का Prediction चाहते हैं तो अभी हमारा telegram जॉइन करे।'"/>
+                 </View>
+
         <View style={styles.bottomContainer}>
           <IconButton
             iconSource={require('./assets/telegram.png')}
@@ -73,8 +80,8 @@ const Page1: React.FC<Props> = ({ navigation }) => {
       </View>
       <CustomAlert
         visible={alertVisible}
-        title="Invalid Input"
-        message="Please enter an integer."
+        title="Enter valid ID"
+        message="अगर आप पहले से ही registered है तो अपना ID डाले !"
         onCancel={() => setAlertVisible(false)}
         onConfirm={() => setAlertVisible(false)}
       />
@@ -89,7 +96,7 @@ export const page2Styles = StyleSheet.create({
     alignSelf: 'center',
     justifyContent: 'flex-start',
     marginTop: 0,
-    padding: 20, 
+    padding: 20,
     width: '100%',
   },
   idImage: {
@@ -106,8 +113,20 @@ export const page2Styles = StyleSheet.create({
     marginBottom: 10,
     alignItems: 'center',
     alignSelf: 'center',
-    marginTop: 100,
+    marginTop: 70,
   },
+  chatContainer: {
+    backgroundColor: 'transparent',
+    width: '100%', // Reduce width to center it within the screen
+    height: '10%', // Adjusted height for chat container
+    marginTop:15, // Space from the elements above it
+    paddingLeft: "5%", // Align the chat content to the left inside container
+    paddingRight: "5%", // Align the chat content to the right inside container
+    justifyContent: 'center', // Vertically center the content
+    alignItems: 'center', // Horizontally center the content
+    marginHorizontal: '10%', // Center the container horizontally
+  },
+
 });
 
 export default Page1;

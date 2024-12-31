@@ -1,34 +1,20 @@
 import React, { useState } from 'react';
-import {
-  View,
-  Linking,
-  ImageBackground,
-  StyleSheet,
-  Image,
-} from 'react-native';
+import { View, Linking, ImageBackground, StyleSheet, Image } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from './App';
 import IconButton from './components/IconButton';
 import CustomButton from './components/CustomButton';
 import CustomAlert from './components/CustomAlert';
 
-const handlePress = (setAlertVisible: React.Dispatch<React.SetStateAction<boolean>>, setAlertConfig: React.Dispatch<React.SetStateAction<any>>) => {
-  setAlertConfig({
-    title: 'Open URL',
-    message: 'This will redirect you to a website out of this app',
-    onCancel: () => setAlertVisible(false),
-    onConfirm: () => {
-      setAlertVisible(false);
-      Linking.openURL('https://www.youtube.com/c/GamingFreak21');
-    },
-  });
-  setAlertVisible(true);
+const handlePress = () => {
+  // Directly open the URL when the REGISTER button is pressed
+  Linking.openURL('https://t.me/+yEqSoVMvXK4xNDY1');
 };
 
 const handleButtonPress = (navigation: any, setAlertVisible: React.Dispatch<React.SetStateAction<boolean>>, setAlertConfig: React.Dispatch<React.SetStateAction<any>>) => {
   setAlertConfig({
-    title: 'Go to Login?',
-    message: 'Please register first if you are new user',
+    title: ' क्या आप 100% prediction चाहते है तो ?',
+    message: 'एक new number से register करे या OK पर click करे!',
     onCancel: () => setAlertVisible(false),
     onConfirm: () => {
       setAlertVisible(false);
@@ -67,17 +53,20 @@ const Page1: React.FC<Props> = ({ navigation }) => {
             />
           </View>
           <View>
-            <CustomButton title="REGISTER" onPress={() => handlePress(setAlertVisible, setAlertConfig)} />
+            <CustomButton title="REGISTER" onPress={handlePress} /> {/* Directly open the URL */}
           </View>
         </View>
         <View style={styles.bottomContainer}>
           <IconButton
             iconSource={require('./assets/telegram.png')}
             label="Telegram"
+
+
           />
           <IconButton
             iconSource={require('./assets/support.png')}
             label="Support"
+
           />
         </View>
       </View>
@@ -129,9 +118,9 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     width: '100%',
-    paddingHorizontal: 20,
+    paddingHorizontal: 10,
     position: 'absolute',
-    bottom: "5%",
+    bottom: '8%',
   },
   bottomText: {
     fontSize: 20,
@@ -146,7 +135,7 @@ export const styles = StyleSheet.create({
     alignSelf: 'center',
     borderRadius: 10,
     color: 'black',
-    backgroundColor: '#FFFFFFFF'
+    backgroundColor: '#FFFFFFFF',
   },
   icon: {
     width: 20,
@@ -158,4 +147,5 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
 });
+
 export default Page1;

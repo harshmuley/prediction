@@ -27,8 +27,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     marginVertical: 10,
     borderRadius: 50,
-    backgroundColor: 'black',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
     color: 'white', // Ensure text color is white
+
   },
 });
 

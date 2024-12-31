@@ -96,7 +96,7 @@ const Page3: React.FC<Props> = ({route, navigation}) => {
         {/* Input field for user to enter a number */}
         <TextInput
           style={styles.textInput}
-          placeholder="Enter an integer"
+          placeholder="Enter period number"
           keyboardType="numeric" // Numeric keyboard
           value={inputValue}
           onChangeText={handleInputChange}
@@ -126,7 +126,7 @@ const Page3: React.FC<Props> = ({route, navigation}) => {
                     Page3Styles.text,
                     {color: 'white', marginRight: 10, textAlign: 'center'},
                   ]}>
-                  Random Color: {randomColor}
+                  Color: {randomColor}
                 </Text>
                 <View
                   style={{
@@ -152,7 +152,7 @@ const Page3: React.FC<Props> = ({route, navigation}) => {
                     Page3Styles.text,
                     {color: 'white', marginRight: 10, textAlign: 'center'},
                   ]}>
-                  Random Size: {randomSizeText}
+                  Size: {randomSizeText}
                 </Text>
               </View>
             )}
@@ -162,7 +162,7 @@ const Page3: React.FC<Props> = ({route, navigation}) => {
         {/* Button to generate random color and size */}
         <View style={styles.buttonContainer}>
           <CustomButton
-            title="Generate Random "
+            title=" Give  Prediction "
             onPress={handleRandomColorButtonpress}
           />
         </View>
@@ -171,11 +171,12 @@ const Page3: React.FC<Props> = ({route, navigation}) => {
           <CustomButton title="Home" onPress={() => handlePress(navigation)} />
         </View>
       </View>
+      
       <View style={[Page3Styles.chatContainer, { alignItems: 'flex-end' ,paddingRight: "5%"}]}>
         <CustomChatBar textcontent="Create a new 55club account by clicking on 'Register' button, if you use this mod in your old account, then mod will not work.from this too" />
       </View>
        <View style={[Page3Styles.chatContainer,{ alignItems: 'flex-start' ,paddingLeft: "5%"}]}>
-        <CustomChatBar textcontent="'Register' बटन पर क्लिक करके एक नया account बनाएं, यदि आप इस मॉड का उपयोग अपने पुराने account में करते हैं, तो मॉड काम नहीं करेगा।" />
+        <CustomChatBar textcontent="'Register' बटन पर क्लिक करके एक नया account बनाएं, यदि आप इस मॉड का उपयोग अपने पुराने account में करते हैं, तो Mod काम नहीं करेगा।" />
       </View>
 
       <View style={styles.bottomContainer}>
@@ -191,8 +192,8 @@ const Page3: React.FC<Props> = ({route, navigation}) => {
 
       <CustomAlert
         visible={alertVisible}
-        title="Invalid Input"
-        message="Please enter a valid integer value."
+        title="Invalid Number"
+        message="Please enter a period Number, अगर आप केवल नया अकाउंट बनाते हैं तो हमारा टूल 100% काम करेगा ."
         onCancel={() => setAlertVisible(false)}
         onConfirm={() => setAlertVisible(false)}
       />
@@ -216,6 +217,7 @@ const Page3Styles = StyleSheet.create({
     elevation: 5, // Elevation for Android
     width: '80%',
     minHeight: '10%', // Minimum height to ensure some space
+    marginVertical: '20%',
   },
   input: {
     height: 40,
@@ -238,12 +240,12 @@ const Page3Styles = StyleSheet.create({
     width: 60,
     height: 60,
     backgroundColor: 'transparent',
-    marginBottom: 0,
+    marginBottom: 10,
   },
   NestedBlur: {
     borderRadius: 10,
     overflow: 'hidden',
-    padding: 10,
+    padding: 5,
     marginVertical: 10,
     color: 'white',
     backgroundColor: '#344B7963',
@@ -257,7 +259,10 @@ const Page3Styles = StyleSheet.create({
     backgroundColor: 'transparent',
     width: '100%',
     height: '10%', // Adjusted height to move up
-    marginTop: "3%",
+    marginTop: "1%",
+    marginVertical: '5%',
+
+
   }
 });
 

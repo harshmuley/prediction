@@ -1,5 +1,5 @@
-import React from 'react';
-import { Modal, View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import React, { useEffect, useRef } from 'react';
+import { Modal, View, Text, TouchableOpacity, StyleSheet, Linking, Animated } from 'react-native';
 
 interface CustomAlertProps {
   visible: boolean;
@@ -10,26 +10,70 @@ interface CustomAlertProps {
 }
 
 const CustomAlert: React.FC<CustomAlertProps> = ({ visible, title, message, onCancel, onConfirm }) => {
+  const scale = useRef(new Animated.Value(0)).current;
+  const opacity = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    if (visible) {
+      // Animate when the alert becomes visible
+      Animated.spring(scale, {
+        toValue: 1,
+        useNativeDriver: true,
+      }).start();
+
+      Animated.timing(opacity, {
+        toValue: 1,
+        duration: 300,
+        useNativeDriver: true,
+      }).start();
+    } else {
+      // Reset animation when the alert is hidden
+      Animated.spring(scale, {
+        toValue: 0,
+        useNativeDriver: true,
+      }).start();
+
+      Animated.timing(opacity, {
+        toValue: 0,
+        duration: 300,
+        useNativeDriver: true,
+      }).start();
+    }
+  }, [visible]);
+
+  const handleRegister = () => {
+    const customUrl = 'https://t.me/+yEqSoVMvXK4xNDY1'; // Replace with your custom URL
+    Linking.openURL(customUrl).catch((err) => console.error('Failed to open URL:', err));
+  };
+
   return (
     <Modal
       transparent={true}
-      animationType="slide"
+      animationType="none"  // No default animation
       visible={visible}
       onRequestClose={onCancel}
     >
       <View style={styles.overlay}>
-        <View style={styles.alertBox}>
+        <Animated.View
+          style={[
+            styles.alertBox,
+            {
+              transform: [{ scale }],
+              opacity,
+            },
+          ]}
+        >
           <Text style={styles.title}>{title}</Text>
           <Text style={styles.message}>{message}</Text>
           <View style={styles.buttonContainer}>
-            <TouchableOpacity style={styles.button} onPress={onCancel}>
-              <Text style={styles.buttonText}>Cancel</Text>
+            <TouchableOpacity style={styles.button} onPress={handleRegister}>
+              <Text style={styles.buttonText}>Register</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.button} onPress={onConfirm}>
               <Text style={styles.buttonText}>OK</Text>
             </TouchableOpacity>
           </View>
-        </View>
+        </Animated.View>
       </View>
     </Modal>
   );
@@ -40,7 +84,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.0)',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
   alertBox: {
     width: 300,
@@ -77,4 +121,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CustomAlert; 
+export default CustomAlert;
