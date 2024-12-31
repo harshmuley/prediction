@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { View, TextInput, StyleSheet, ImageBackground, Image, Text } from 'react-native';
+import { View, ImageBackground,StyleSheet, Image, Text } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from './App';
 import { styles } from './Page1';
 import IconButton from './components/IconButton';
 import CustomButton from './components/CustomButton';
 import CustomAlert from './components/CustomAlert';
+import CustomTextInput from './components/CustomTextInput';
 
 type Page1NavigationProp = StackNavigationProp<RootStackParamList, 'Page2'>;
 
@@ -50,10 +51,9 @@ const Page1: React.FC<Props> = ({ navigation }) => {
           
           imageStyle={{ borderRadius: 20 }} // Make image borders rounded
         />
-        <TextInput
-          style={styles.textInput}
-          placeholder="Enter an profile ID"
-          keyboardType="numeric" // Numeric keyboard
+        <CustomTextInput
+          placeholder="Enter a profile ID"
+          keyboardType="numeric"
           value={inputValue}
           onChangeText={handleInputChange}
         />

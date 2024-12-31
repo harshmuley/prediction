@@ -90,7 +90,7 @@ const Page3: React.FC<Props> = ({route, navigation}) => {
       blurRadius={10}>
       <TopBar onlineUsers={savedValue} />
       <View style={Page3Styles.container}>
-        <Image source={require('./assets/icon.png')} style={Page3Styles.topImage} />
+        {/* <Image source={require('./assets/icon.png')} style={Page3Styles.topImage} /> */}
 
         {/* Input field for user to enter a number */}
         <TextInput
@@ -198,7 +198,7 @@ const Page3Styles = StyleSheet.create({
     alignSelf: 'center',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#232A43FF',
+    backgroundColor: '#232A4380', // 50% transparency
     marginVertical: '50%', // Pushes the container down halfway across the screen on the y-axis
     padding: 20,
     borderRadius: 30,
