@@ -16,6 +16,7 @@ import IconButton from './components/IconButton';
 import CustomButton from './components/CustomButton';
 import TopBar from './components/TopBar';
 import CustomAlert from './components/CustomAlert';
+import CustomChatBar from './components/CustomChatBar';
 
 type Page3RouteProp = RouteProp<RootStackParamList, 'Page3'>;
 type Page3NavigationProp = StackNavigationProp<RootStackParamList, 'Page3'>;
@@ -89,7 +90,7 @@ const Page3: React.FC<Props> = ({route, navigation}) => {
       style={styles.background}
       blurRadius={10}>
       <TopBar onlineUsers={savedValue} />
-      <View style={Page3Styles.container}>
+      <View style={Page3Styles.BlurBackground}>
         {/* <Image source={require('./assets/icon.png')} style={Page3Styles.topImage} /> */}
 
         {/* Input field for user to enter a number */}
@@ -112,7 +113,7 @@ const Page3: React.FC<Props> = ({route, navigation}) => {
 
         {/* Display random color and size only if loading is false */}
         {!isLoading && (randomColor || randomSizeText) ? (
-          <View style={Page3Styles.roundedContainer}>
+          <View style={Page3Styles.NestedBlur}>
             {randomColor && (
               <View
                 style={{
@@ -132,7 +133,7 @@ const Page3: React.FC<Props> = ({route, navigation}) => {
                     width: 30,
                     height: 15,
                     backgroundColor: randomColor,
-                    borderRadius: 1,
+                    borderRadius: 7,
                     borderWidth: 1,
                     borderColor: 'white',
                   }}
@@ -170,6 +171,12 @@ const Page3: React.FC<Props> = ({route, navigation}) => {
           <CustomButton title="Home" onPress={() => handlePress(navigation)} />
         </View>
       </View>
+      <View style={[Page3Styles.chatContainer, { alignItems: 'flex-end' ,paddingRight: "5%"}]}>
+        <CustomChatBar textcontent="Create a new 55club account by clicking on 'Register' button, if you use this mod in your old account, then mod will not work.from this too" />
+      </View>
+       <View style={[Page3Styles.chatContainer,{ alignItems: 'flex-start' ,paddingLeft: "5%"}]}>
+        <CustomChatBar textcontent="'Register' बटन पर क्लिक करके एक नया account बनाएं, यदि आप इस मॉड का उपयोग अपने पुराने account में करते हैं, तो मॉड काम नहीं करेगा।" />
+      </View>
 
       <View style={styles.bottomContainer}>
         <IconButton
@@ -194,12 +201,12 @@ const Page3: React.FC<Props> = ({route, navigation}) => {
 };
 
 const Page3Styles = StyleSheet.create({
-  container: {
+  BlurBackground: {
     alignSelf: 'center',
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'transparent', // Make background transparent
-    marginVertical: '40%', // Pushes the container down halfway across the screen on the y-axis
+    marginVertical: '25%', // Adjusted margin to move up
     padding: 20,
     borderColor: 'white',
     shadowColor: '#000', // Add shadow for elevation effect
@@ -208,7 +215,7 @@ const Page3Styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5, // Elevation for Android
     width: '80%',
-    height: '30%',
+    minHeight: '10%', // Minimum height to ensure some space
   },
   input: {
     height: 40,
@@ -233,7 +240,7 @@ const Page3Styles = StyleSheet.create({
     backgroundColor: 'transparent',
     marginBottom: 0,
   },
-  roundedContainer: {
+  NestedBlur: {
     borderRadius: 10,
     overflow: 'hidden',
     padding: 10,
@@ -244,7 +251,14 @@ const Page3Styles = StyleSheet.create({
     height: 100,
     borderWidth: 1,
     borderColor: 'white',
+    marginBottom: "10%",
   },
+  chatContainer: {
+    backgroundColor: 'transparent',
+    width: '100%',
+    height: '10%', // Adjusted height to move up
+    marginTop: "3%",
+  }
 });
 
 export default Page3;

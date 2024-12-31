@@ -11,7 +11,7 @@ const IconButton: React.FC<IconButtonProps> = ({ iconSource, label }) => {
     <TouchableOpacity style={styles.smallButton}>
       <View style={styles.iconTextContainer}>
         <Image source={iconSource} style={styles.icon} />
-        <Text style={{ textAlign: 'center' }}>{label}</Text>
+        <Text style={{ textAlign: 'center', color: 'white' }}>{label}</Text>
       </View>
     </TouchableOpacity>
   );
@@ -24,10 +24,11 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     width: '40%',
     alignSelf: 'flex-start',
-    backgroundColor: '#00C3FFFF',
-    height: 40,
+    backgroundColor: 'transparent',
+    height: "100%",
     alignItems: 'center',
     justifyContent: 'center',
+    borderWidth: 1,
   },
   icon: {
     width: 20,

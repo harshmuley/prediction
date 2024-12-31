@@ -131,7 +131,7 @@ export const styles = StyleSheet.create({
     width: '100%',
     paddingHorizontal: 20,
     position: 'absolute',
-    bottom: 50,
+    bottom: "5%",
   },
   bottomText: {
     fontSize: 20,
