@@ -5,8 +5,10 @@ import { StatusBar } from 'react-native';
 import Page1 from './Page1';
 import Page2 from './Page2';
 import Page3 from './Page3';
+import SplashScreen from './SplashScreen';
 
 export type RootStackParamList = {
+  SplashScreen: undefined;
   Page1: undefined;
   Page2: undefined;
   Page3: { savedValue: number };
@@ -21,16 +23,18 @@ const App: React.FC = () => {
       <StatusBar hidden={true} />
       <NavigationContainer>
         <Stack.Navigator
-          initialRouteName="Page1"
+          initialRouteName="SplashScreen"
           screenOptions={{
-            gestureEnabled: true, // Enable swipe gestures on Android
-            cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS, // Custom slide animation
+            gestureEnabled: false,
+            cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
             headerShown: false,
           }}
         >
+          <Stack.Screen name="SplashScreen" component={SplashScreen} />
           <Stack.Screen name="Page1" component={Page1} />
           <Stack.Screen name="Page2" component={Page2} />
           <Stack.Screen name="Page3" component={Page3} />
+          {/* Add any additional screens here */}
         </Stack.Navigator>
       </NavigationContainer>
     </>

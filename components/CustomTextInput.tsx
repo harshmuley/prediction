@@ -13,6 +13,7 @@ const CustomTextInput: React.FC<CustomTextInputProps> = ({ value, onChangeText, 
         style={styles.textInput}
         value={value}
         onChangeText={onChangeText}
+        textAlign="center" // Center the placeholder text
         {...props} 
       />
   );

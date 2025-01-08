@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Linking, ImageBackground, StyleSheet, Image } from 'react-native';
+import { View, Linking, ImageBackground, StyleSheet, Image, Text } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from './App';
 import IconButton from './components/IconButton';
@@ -8,7 +8,7 @@ import CustomAlert from './components/CustomAlert';
 
 const handlePress = () => {
   // Directly open the URL when the REGISTER button is pressed
-  Linking.openURL('https://t.me/+yEqSoVMvXK4xNDY1');
+  Linking.openURL('https://www.in979.in/#/register?invitationCode=541136319446');
 };
 
 const handleButtonPress = (navigation: any, setAlertVisible: React.Dispatch<React.SetStateAction<boolean>>, setAlertConfig: React.Dispatch<React.SetStateAction<any>>) => {
@@ -53,20 +53,17 @@ const Page1: React.FC<Props> = ({ navigation }) => {
             />
           </View>
           <View>
-            <CustomButton title="REGISTER" onPress={handlePress} /> {/* Directly open the URL */}
+            <CustomButton title="REGISTER" onPress={handlePress} />
           </View>
         </View>
         <View style={styles.bottomContainer}>
           <IconButton
             iconSource={require('./assets/telegram.png')}
             label="Telegram"
-
-
           />
           <IconButton
             iconSource={require('./assets/support.png')}
             label="Support"
-
           />
         </View>
       </View>
@@ -101,7 +98,7 @@ export const styles = StyleSheet.create({
   },
   buttonContainer: {
     width: 250,
-    marginBottom: 20,
+    marginBottom: 10,
     borderRadius: 10,
   },
   smallButton: {

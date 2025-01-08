@@ -118,7 +118,7 @@ export const page2Styles = StyleSheet.create({
   chatContainer: {
     backgroundColor: 'transparent',
     width: '100%', // Reduce width to center it within the screen
-    height: '10%', // Adjusted height for chat container
+    height: '15%', // Adjusted height for chat container
     marginTop:15, // Space from the elements above it
     paddingLeft: "5%", // Align the chat content to the left inside container
     paddingRight: "5%", // Align the chat content to the right inside container

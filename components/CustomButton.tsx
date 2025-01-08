@@ -1,6 +1,7 @@
 import React from 'react';
-import { TouchableOpacity, Text, StyleSheet, View } from 'react-native';
+import { TouchableOpacity, Text, StyleSheet, View, Alert } from 'react-native';
 import { LinearGradient } from 'react-native-linear-gradient';
+import Sound from 'react-native-sound'; // Import Sound from react-native-sound for sound playback
 
 interface CustomButtonProps {
   title: string;
@@ -8,14 +9,31 @@ interface CustomButtonProps {
 }
 
 const CustomButton: React.FC<CustomButtonProps> = ({ title, onPress }) => {
+  const playSound = () => {
+    const sound = new Sound(require('../assets/Audio/tap.mp3'), (error) => {
+      if (error) {
+        Alert.alert('Error', 'Failed to load the sound');
+        return;
+      }
+      sound.play(() => {
+        sound.release();
+      });
+    });
+  };
+
+  const handlePress = () => {
+    playSound(); // Play sound
+    onPress(); // Execute the original onPress logic
+  };
+
   return (
     <LinearGradient
-      colors={['#C933FFFF', '#3363FFFF',"#C933FFFF"]} // Gradient colors
+      colors={['#C933FFFF', '#3363FFFF', "#C933FFFF"]} // Gradient colors
       start={{ x: 0, y: 0 }} // Start from the left
       end={{ x: 1, y: 0 }} // End at the right
       style={styles.gradientBorder}
     >
-      <TouchableOpacity style={styles.button} onPress={onPress}>
+      <TouchableOpacity style={styles.button} onPress={handlePress}>
         <Text style={styles.buttonText}>{title}</Text>
       </TouchableOpacity>
     </LinearGradient>

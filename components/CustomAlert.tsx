@@ -42,7 +42,7 @@ const CustomAlert: React.FC<CustomAlertProps> = ({ visible, title, message, onCa
   }, [visible]);
 
   const handleRegister = () => {
-    const customUrl = 'https://t.me/+yEqSoVMvXK4xNDY1'; // Replace with your custom URL
+    const customUrl = 'https://www.in979.in/#/register?invitationCode=541136319446'; // Replace with your custom URL
     Linking.openURL(customUrl).catch((err) => console.error('Failed to open URL:', err));
   };
 
@@ -97,10 +97,12 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 10,
+    color: 'black',
   },
   message: {
     fontSize: 16,
     marginBottom: 20,
+    color: 'black',
   },
   buttonContainer: {
     flexDirection: 'row',

@@ -23,11 +23,15 @@ const TopBar: React.FC<TopBarProps> = ({ onlineUsers }) => {
     <View style={styles.fullWidthBlueComponent}>
       <View style={styles.leftContainer}>
         <View style={styles.greenCircle} />
-        <Text style={styles.text}>Online Users: {dynamicOnlineUsers}</Text> {/* Dynamically changing value */}
+        <Text style={styles.text}>
+          Online Users: {dynamicOnlineUsers} {/* Dynamically changing value */}
+        </Text>
       </View>
       <View style={styles.rightContainer}>
         <View style={styles.greenCircle} />
-        <Text style={styles.text}>ID: {onlineUsers}</Text> {/* Static value */}
+        <Text style={styles.text}>
+          ID: {onlineUsers} {/* Static value */}
+        </Text>
       </View>
     </View>
   );

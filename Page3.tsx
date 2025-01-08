@@ -207,7 +207,7 @@ const Page3Styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'transparent', // Make background transparent
-    marginVertical: '25%', // Adjusted margin to move up
+    marginVertical: '5%', // Adjusted margin to move up
     padding: 20,
     borderColor: 'white',
     shadowColor: '#000', // Add shadow for elevation effect
@@ -216,8 +216,7 @@ const Page3Styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5, // Elevation for Android
     width: '80%',
-    minHeight: '10%', // Minimum height to ensure some space
-    marginVertical: '20%',
+    minHeight: '10%',
   },
   input: {
     height: 40,
