@@ -2,7 +2,7 @@ import React from 'react';
 import { TouchableOpacity, View, Image, Text, StyleSheet,Linking } from 'react-native';
 const handlePress = () => {
   // Directly open the URL when the REGISTER button is pressed
-  Linking.openURL('https://t.me/+yEqSoVMvXK4xNDY1');
+  Linking.openURL('https://t.me/JalwaWinningonly');
 };
 
 

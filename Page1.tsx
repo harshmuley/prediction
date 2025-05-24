@@ -8,7 +8,7 @@ import CustomAlert from './components/CustomAlert';
 
 const handlePress = () => {
   // Directly open the URL when the REGISTER button is pressed
-  Linking.openURL('https://www.in979.in/#/register?invitationCode=541136319446');
+  Linking.openURL('https://tinyurl.com/TGJalwaGameRegisterLink');
 };
 
 const handleButtonPress = (navigation: any, setAlertVisible: React.Dispatch<React.SetStateAction<boolean>>, setAlertConfig: React.Dispatch<React.SetStateAction<any>>) => {
@@ -95,6 +95,7 @@ export const styles = StyleSheet.create({
     height: 200,
     backgroundColor: 'transparent',
     marginBottom: 100,
+    borderRadius: 40,
   },
   buttonContainer: {
     width: 250,

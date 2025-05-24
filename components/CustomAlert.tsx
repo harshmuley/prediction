@@ -42,7 +42,7 @@ const CustomAlert: React.FC<CustomAlertProps> = ({ visible, title, message, onCa
   }, [visible]);
 
   const handleRegister = () => {
-    const customUrl = 'https://www.in979.in/#/register?invitationCode=541136319446'; // Replace with your custom URL
+    const customUrl = 'https://tinyurl.com/TGJalwaGameRegisterLink'; // Replace with your custom URL
     Linking.openURL(customUrl).catch((err) => console.error('Failed to open URL:', err));
   };
 

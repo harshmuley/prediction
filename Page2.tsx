@@ -114,6 +114,7 @@ export const page2Styles = StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'center',
     marginTop: 70,
+    borderRadius: 10,
   },
   chatContainer: {
     backgroundColor: 'transparent',
